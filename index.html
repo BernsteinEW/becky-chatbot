@@ -4,34 +4,55 @@
   <meta charset="UTF-8">
   <title>Becky – Beckhoff Chatbot</title>
   <style>
-    body { font-family: Arial; padding: 20px; }
-    #chat { border: 1px solid #ccc; padding: 10px; height: 300px; overflow-y: scroll; }
-    input { width: 80%; }
+    body {
+      font-family: Arial;
+      padding: 20px;
+    }
+    #chat {
+      border: 1px solid #ccc;
+      padding: 10px;
+      height: 300px;
+      overflow-y: scroll;
+    }
+    input {
+      width: 80%;
+    }
   </style>
 </head>
 <body>
-  <h2>Becky – Deine Beckhoff SPS-Expertin ??</h2>
+  <h2>Becky – Deine Beckhoff SPS-Expertin 🤖</h2>
   <div id="chat"></div>
-  <input id="userInput" placeholder="Frag mich was zu Beckhoff..." />
-  <button onclick="sendMessage()">Senden</button>
+  <input id="user-input" placeholder="Frag mich was zu Beckhoff..." />
+  <button id="send-button" onclick="sendMessage()">Senden</button>
 
   <script>
     const chat = document.getElementById('chat');
+
     function sendMessage() {
-      const input = document.getElementById('userInput');
+      const input = document.getElementById('user-input');
       const userText = input.value;
+      if (!userText.trim()) return;
+
       chat.innerHTML += `<p><strong>Du:</strong> ${userText}</p>`;
       input.value = '';
 
       // Simulierte Antwort
       let reply = "Ich bin Becky! Für Infos zu TwinCAT schau mal hier: https://infosys.beckhoff.com";
       if (userText.toLowerCase().includes("twincat")) {
-        reply = "TwinCAT ist Beckhoffs Softwareplattform für SPS und Motion. Mehr dazu findest du [hier](https://infosys.beckhoff.com).";
+        reply = "TwinCAT ist Beckhoffs Softwareplattform für SPS und Motion. Mehr dazu findest du <a href='https://infosys.beckhoff.com' target='_blank'>hier</a>.";
       }
 
       chat.innerHTML += `<p><strong>Becky:</strong> ${reply}</p>`;
+      chat.scrollTop = chat.scrollHeight;
     }
+
+    // Enter-Taste aktivieren
+    document.getElementById("user-input").addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        document.getElementById("send-button").click();
+      }
+    });
   </script>
 </body>
 </html>
-
