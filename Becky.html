@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Becky – Beckhoff Chatbot</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    #chat { border: 1px solid #ccc; padding: 10px; height: 300px; overflow-y: scroll; }
+    input { width: 80%; }
+  </style>
+</head>
+<body>
+  <h2>Becky – Deine Beckhoff SPS-Expertin ??</h2>
+  <div id="chat"></div>
+  <input id="userInput" placeholder="Frag mich was zu Beckhoff..." />
+  <button onclick="sendMessage()">Senden</button>
+
+  <script>
+    const chat = document.getElementById('chat');
+    function sendMessage() {
+      const input = document.getElementById('userInput');
+      const userText = input.value;
+      chat.innerHTML += `<p><strong>Du:</strong> ${userText}</p>`;
+      input.value = '';
+
+      // Simulierte Antwort
+      let reply = "Ich bin Becky! Für Infos zu TwinCAT schau mal hier: https://infosys.beckhoff.com";
+      if (userText.toLowerCase().includes("twincat")) {
+        reply = "TwinCAT ist Beckhoffs Softwareplattform für SPS und Motion. Mehr dazu findest du [hier](https://infosys.beckhoff.com).";
+      }
+
+      chat.innerHTML += `<p><strong>Becky:</strong> ${reply}</p>`;
+    }
+  </script>
+</body>
+</html>
