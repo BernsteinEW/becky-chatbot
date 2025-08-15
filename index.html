@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Becky – Beckhoff Chatbot</title>
+  <meta charset="UTF-8">
+  <title>Becky â€“ Beckhoff Chatbot</title>
   <style>
     body { font-family: Arial; padding: 20px; }
     #chat { border: 1px solid #ccc; padding: 10px; height: 300px; overflow-y: scroll; }
@@ -9,7 +10,7 @@
   </style>
 </head>
 <body>
-  <h2>Becky – Deine Beckhoff SPS-Expertin ??</h2>
+  <h2>Becky â€“ Deine Beckhoff SPS-Expertin ??</h2>
   <div id="chat"></div>
   <input id="userInput" placeholder="Frag mich was zu Beckhoff..." />
   <button onclick="sendMessage()">Senden</button>
@@ -23,9 +24,9 @@
       input.value = '';
 
       // Simulierte Antwort
-      let reply = "Ich bin Becky! Für Infos zu TwinCAT schau mal hier: https://infosys.beckhoff.com";
+      let reply = "Ich bin Becky! FÃ¼r Infos zu TwinCAT schau mal hier: https://infosys.beckhoff.com";
       if (userText.toLowerCase().includes("twincat")) {
-        reply = "TwinCAT ist Beckhoffs Softwareplattform für SPS und Motion. Mehr dazu findest du [hier](https://infosys.beckhoff.com).";
+        reply = "TwinCAT ist Beckhoffs Softwareplattform fÃ¼r SPS und Motion. Mehr dazu findest du [hier](https://infosys.beckhoff.com).";
       }
 
       chat.innerHTML += `<p><strong>Becky:</strong> ${reply}</p>`;
@@ -33,3 +34,4 @@
   </script>
 </body>
 </html>
+
